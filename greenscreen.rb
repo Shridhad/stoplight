@@ -56,13 +56,38 @@ def accumulate_projects(server, xml)
       end
     end
 
+  ignore_job_matchers =
+    if server["ignore_jobs"]
+      server["ignore_jobs"].collect do |j|
+        if j =~ %r{^/.*/$}
+          Regexp.new(j[1..(j.size-2)])
+        else
+          Regexp.new("^#{Regexp.escape(j)}$")
+        end
+      end
+    end
+
   projects.collect do |project|
     monitored_project = MonitoredProject.create(project)
-    if job_matchers
-      if job_matchers.detect { |matcher| monitored_project.name =~ matcher }
-        monitored_project
+    include_this_project = true
+    if job_matchers || ignore_job_matchers
+      # first, check if we should ignore this job
+      if ignore_job_matchers
+        if ignore_job_matchers.detect { |ignore| monitored_project.name =~ ignore }
+          include_this_project = false
+        end
       end
-    else
+
+      if job_matchers
+        # ignore the project, unless it's included
+        include_this_project = false
+        if job_matchers.detect { |matcher| monitored_project.name =~ matcher }
+          include_this_project = true
+        end
+      end
+    
+    end
+    if include_this_project
       monitored_project
     end
   end.flatten.compact

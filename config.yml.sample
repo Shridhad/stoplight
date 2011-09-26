@@ -25,3 +25,12 @@
 #   jobs:
 #     - roodi    # the build named "roodi"
 #     - /^run/   # all builds starting with "run"
+#
+# If you have a lot of jobs, but only want to disable one or two of them,
+# try explicitly ignoring them
+# -
+#   url: http://localhost:8080/cc.xml
+#   username: hudson-user
+#   password: hudson-password
+#   ignore_jobs:
+#     - test    # the build named "test"

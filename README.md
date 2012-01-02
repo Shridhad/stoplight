@@ -61,6 +61,10 @@ screen.
 GreenScreen also includes a rackup file (`config.ru`) so you can
 deploy it under whichever rack-supporting webserver you like.
 
+## Deployment options
+
+Deploying Green Screen to [Heroku](http://www.heroku.com) is a snap. Of course, if your build servers aren't publicly accessible, Heroku won't be a great option. A [Chef Cookbook for deploying Green Screen](http://community.opscode.com/cookbooks/greenscreen) is available on [the Opscode Community site](http://community.opscode.com/cookbooks/greenscreen).  You can read more about both options in [Nathen Harvey's blog](http://nathenharvey.com/blog/2012/01/02/deploying-green-screen/).
+
 ## Credits
 
 GreenScreen was original developed by [martinjandrews][mja].

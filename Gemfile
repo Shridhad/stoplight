@@ -1,8 +1,21 @@
 source :rubygems
 
-gem "sinatra", "~> 1.0.0"
-gem "hpricot", "~> 0.8.4"
+gem 'activesupport'
+gem 'compass'
+gem 'foreman'
+gem 'httparty'
+gem 'rspec'
+gem 'sinatra'
+gem 'time-lord'
 
 group :development do
-  gem "shotgun", "~> 0.8"
+  gem 'growl'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'shotgun'
+end
+
+group :test do
+  gem 'rack-test'
+  gem 'webmock'
 end

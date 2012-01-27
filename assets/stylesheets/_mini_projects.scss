@@ -1,0 +1,83 @@
+aside#mini-projects {
+  background: #eee;
+  color: #fff;
+  border-right: 1px solid #777;
+  font-family: Helvetica, sans-serif;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 200px;
+
+  top: 0;
+  left: 0;
+  bottom: -1px; // to offset the border-bottom on the last element iff the list > 100% height
+
+  a.project {
+    @include background-image(linear-gradient(#eee, #ccc));
+    border-bottom: 1px solid #777;
+    @include box-shadow(inset, 0 1px 0 rgba(0,0,0,.3));
+    color: $dark-gray;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 0 15px 25px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    white-space: nowrap;
+
+    &:hover {
+      @include background-image(linear-gradient(#fafafa, #ddd));
+    }
+
+    &:active {
+      background: #ddd;
+    }
+
+    &:focus {
+      background: #ddd;
+      outline: 0;
+    }
+
+    &:before {
+      background: #ccc;
+      background: rgba(0,0,0,.1);
+      @include box-shadow(1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5));
+      content: '\2022';
+      float: left;
+      font-size: 50px;
+      line-height: 35px;
+      overflow: hidden;
+      position: absolute;
+      text-align: center;
+      width: 20px;
+
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &.passed:before {
+      color: $green;
+    }
+
+    &.failed:before {
+      color: $red;
+    }
+
+    &.building:before {
+      color: $yellow !important;
+    }
+  }
+
+  time.last-build-time {
+    float: left;
+    font-size: 9px;
+    overflow: hidden;
+    position: absolute;
+
+    left: 25px;
+    top: 20px;
+  }
+}

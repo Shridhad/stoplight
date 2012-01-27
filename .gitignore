@@ -1,3 +1,5 @@
 .bundle
 tmp
 .rvmrc
+.sass-cache
+config/servers.yml

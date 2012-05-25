@@ -1,0 +1,103 @@
+$spacing: 5px;
+
+#projects-board {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  padding: $spacing;
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 201px;
+
+  h1 {
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  article.project {
+    position: absolute;
+    text-align: center;
+
+    top: $spacing;
+    right: $spacing;
+    bottom: $spacing;
+    left: $spacing;
+  }
+
+  &.successful-projects {
+    article.project {
+      @include project-box($green);
+
+      // &:before {
+      //   border: 5px solid #f0f;
+      //   content:'\2713';
+      //   opacity: 0.25;
+      //   position: absolute;
+      //   z-index: 0;
+
+      //   top: 50%;
+      //   left: 50%;
+      //   height: 70%;
+      //   width: 50%;
+      //   margin: -35% 0 0 -25%;
+      // }
+    }
+  }
+
+  &.unsuccessful-projects {
+    .wrapper {
+      float: left;
+      position: relative;
+
+      article.project {
+        &.unknown {
+          @include project-box($dark-gray);
+        }
+
+        &.success {
+          @include project-box($green);
+        }
+
+        &.failed {
+          @include project-box($red);
+        }
+
+        &.building {
+          @include project-box($yellow);
+          animation: fade 0.5s alternate infinite ease-in-out;
+          -webkit-animation: fade 0.5s alternate infinite ease-in-out;
+          -moz-animation: fade 0.5s alternate infinite ease-in-out;
+          -ms-animation: fade 0.5s alternate infinite ease-in-out;
+        }
+
+        p.status {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes 'fade' {
+  0% { opacity:1.0; }
+  100% { opacity:0.5; }
+}
+
+@-webkit-keyframes 'fade' {
+  0% { opacity:1.0; }
+  100% { opacity:0.5; }
+}
+
+@-moz-keyframes 'fade' {
+  0% { opacity:1.0; }
+  100% { opacity:0.5; }
+}
+
+@-ms-keyframes 'fade' {
+  0% { opacity:1.0; }
+  100% { opacity:0.5; }
+}

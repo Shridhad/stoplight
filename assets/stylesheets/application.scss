@@ -1,0 +1,31 @@
+@import 'compass/reset';
+@import 'compass/css3';
+
+// colors
+$green: green;
+$red: #aa0114;
+$yellow: #ffd700;
+$dark-gray: #333333;
+
+
+html, body {
+  background: #eee;
+  background-image: url('../images/background.png');
+  background-repeat: repeat;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  white-space: nowrap;
+}
+
+strong {
+  font-weight: bold;
+}
+
+@import '_mixins';
+@import '_mini_projects';
+@import '_projects';

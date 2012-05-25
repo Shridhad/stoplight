@@ -1,0 +1,32 @@
+# To get started, copy this file to `config.yml` and then use one of
+# the configurations below to point it at your build server.  You'll
+# need to include the line starting with a '-'.  That's how the config
+# files knows it's a list.
+
+# The `projects` and `ignored_projects` options are optional. By default, Stoplight
+# will use all projects returned from the given url. If you want to blacklist,
+# use `ignored_projects`. If you want to whitelist, use `projects`.
+
+# Example Jenkis configuration
+# -
+#   type: 'jenkins'
+#   url: http://ci.jenkins.org/cc.xml
+#   username: my_username
+#   password: my_password
+#   projects:
+#     - mail    # build named "mail"
+#     - /^test/ # all builds starting with "test"
+#   ignored_projects:
+#     - not_me  # ignore the project named "not_me"
+
+
+# Example Travis configuration
+# -
+#   type: 'travis'
+#   url: http://travis-ci.org/repositories.json
+#   owner_name: my_projects # usually your github username
+#   projects:
+#     - mail    # build named "mail"
+#     - /^test/ # all builds starting with "test"
+#   ignored_projects:
+#     - not_me  # ignore the project named "not_me"

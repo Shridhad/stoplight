@@ -1,3 +1,4 @@
-require File.expand_path("../greenscreen.rb", __FILE__)
+$:.unshift File.dirname(__FILE__)
+require 'config/boot'
 
 run Sinatra::Application

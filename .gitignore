@@ -2,5 +2,5 @@
 .rvmrc
 .sass-cache
 config/servers.yml
-log/*
-tmp/*
+log
+tmp

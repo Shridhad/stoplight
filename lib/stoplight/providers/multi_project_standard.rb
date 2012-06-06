@@ -15,15 +15,19 @@ module Stoplight::Providers
     end
 
     def projects
-      @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
-        Stoplight::Project.new({
-          :name => project['name'],
-          :build_url => project['webUrl'],
-          :last_build_id => project['lastBuildLabel'],
-          :last_build_time => project['lastBuildTime'],
-          :last_build_status => status_to_int(project['lastBuildStatus']),
-          :current_status => activity_to_int(project['activity'])
-        })
+      if @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
+        @projects ||= []
+      else
+        @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
+          Stoplight::Project.new({
+            :name => project['name'],
+            :build_url => project['webUrl'],
+            :last_build_id => project['lastBuildLabel'],
+            :last_build_time => project['lastBuildTime'],
+            :last_build_status => status_to_int(project['lastBuildStatus']),
+            :current_status => activity_to_int(project['activity'])
+          })
+        end
       end
     end
 

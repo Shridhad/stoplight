@@ -32,16 +32,17 @@
     </aside>
 
 
-    <% if @unsuccessful_projects.empty? %>
-      <div id="projects-board" class="successful-projects">
-        <article class="project">
-          <h1>
-            <a href="javascript:void();">&#x2713; All projects have been built successfully!</a>
-          </h1>
-        </article>
-      </div>
-    <% else %>
-      <div id="projects-board" class="unsuccessful-projects">
+    <div id="projects-board">
+      <% if @unsuccessful_projects.empty? %>
+        <div class="wrapper">
+          <article class="project success">
+            <h1>
+              <a href="javascript:void();">&#x2713; Hooray!</a>
+            </h1>
+            <p class="status">All builds are passing!</p>
+          </article>
+        </div>
+      <% else %>
         <% @unsuccessful_projects.each do |project| %>
           <div class="wrapper">
             <article class="project <%= project.last_build_status %> <%= project.current_status %>">
@@ -59,8 +60,8 @@
             </article>
           </div>
         <% end %>
-      <div>
-    <% end %>
+      <% end %>
+    <div>
 
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="javascripts/application.js"></script>

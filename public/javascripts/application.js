@@ -14,8 +14,6 @@ var setFontSizes = function() {
     $a = $h1.find('a');
     $p = $element.find('p');
 
-    console.log($p);
-
     // 1.5 is an aribitrary value that only makes sense for this font
     maxCharacterWidth = ($element.width()/$a.html().length)*1.5;
 

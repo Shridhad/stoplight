@@ -36,21 +36,21 @@ aside#mini-projects time.last-build-time { float: left; font-size: 9px; overflow
 #projects-board h1 a { color: #fff; text-decoration: none; }
 #projects-board article.project { position: absolute; text-align: center; top: 5px; right: 5px; bottom: 5px; left: 5px; }
 #projects-board.successful-projects article.project { border: 1px solid black; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #008000), color-stop(100%, #004d00)); background-image: -webkit-linear-gradient(#008000, #004d00); background-image: -moz-linear-gradient(#008000, #004d00); background-image: -o-linear-gradient(#008000, #004d00); background-image: -ms-linear-gradient(#008000, #004d00); background-image: linear-gradient(#008000, #004d00); }
-#projects-board.successful-projects article.project h1 a { color: #003400; text-shadow: 1px 1px 0 green; }
-#projects-board.successful-projects article.project p { color: #003400; }
+#projects-board.successful-projects article.project h1 a { color: #fff; text-shadow: 1px 1px 0 green; }
+#projects-board.successful-projects article.project p { color: #fff; }
 #projects-board.unsuccessful-projects .wrapper { float: left; position: relative; }
 #projects-board.unsuccessful-projects .wrapper article.project.unknown { border: 1px solid black; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #1a1a1a)); background-image: -webkit-linear-gradient(#333333, #1a1a1a); background-image: -moz-linear-gradient(#333333, #1a1a1a); background-image: -o-linear-gradient(#333333, #1a1a1a); background-image: -ms-linear-gradient(#333333, #1a1a1a); background-image: linear-gradient(#333333, #1a1a1a); }
-#projects-board.unsuccessful-projects .wrapper article.project.unknown h1 a { color: #0d0d0d; text-shadow: 1px 1px 0 #333333; }
-#projects-board.unsuccessful-projects .wrapper article.project.unknown p { color: #0d0d0d; }
+#projects-board.unsuccessful-projects .wrapper article.project.unknown h1 a { color: #fff; text-shadow: 1px 1px 0 #333333; }
+#projects-board.unsuccessful-projects .wrapper article.project.unknown p { color: #fff; }
 #projects-board.unsuccessful-projects .wrapper article.project.success { border: 1px solid black; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #008000), color-stop(100%, #004d00)); background-image: -webkit-linear-gradient(#008000, #004d00); background-image: -moz-linear-gradient(#008000, #004d00); background-image: -o-linear-gradient(#008000, #004d00); background-image: -ms-linear-gradient(#008000, #004d00); background-image: linear-gradient(#008000, #004d00); }
-#projects-board.unsuccessful-projects .wrapper article.project.success h1 a { color: #003400; text-shadow: 1px 1px 0 green; }
-#projects-board.unsuccessful-projects .wrapper article.project.success p { color: #003400; }
+#projects-board.unsuccessful-projects .wrapper article.project.success h1 a { color: #fff; text-shadow: 1px 1px 0 green; }
+#projects-board.unsuccessful-projects .wrapper article.project.success p { color: #fff; }
 #projects-board.unsuccessful-projects .wrapper article.project.failed { border: 1px solid #2b0005; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aa0114), color-stop(100%, #77010e)); background-image: -webkit-linear-gradient(#aa0114, #77010e); background-image: -moz-linear-gradient(#aa0114, #77010e); background-image: -o-linear-gradient(#aa0114, #77010e); background-image: -ms-linear-gradient(#aa0114, #77010e); background-image: linear-gradient(#aa0114, #77010e); }
-#projects-board.unsuccessful-projects .wrapper article.project.failed h1 a { color: #5e010b; text-shadow: 1px 1px 0 #aa0114; }
-#projects-board.unsuccessful-projects .wrapper article.project.failed p { color: #5e010b; }
+#projects-board.unsuccessful-projects .wrapper article.project.failed h1 a { color: #fff; text-shadow: 1px 1px 0 #aa0114; }
+#projects-board.unsuccessful-projects .wrapper article.project.failed p { color: #fff; }
 #projects-board.unsuccessful-projects .wrapper article.project.building { border: 1px solid #806c00; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffd700), color-stop(100%, #ccac00)); background-image: -webkit-linear-gradient(#ffd700, #ccac00); background-image: -moz-linear-gradient(#ffd700, #ccac00); background-image: -o-linear-gradient(#ffd700, #ccac00); background-image: -ms-linear-gradient(#ffd700, #ccac00); background-image: linear-gradient(#ffd700, #ccac00); animation: fade 0.5s alternate infinite ease-in-out; -webkit-animation: fade 0.5s alternate infinite ease-in-out; -moz-animation: fade 0.5s alternate infinite ease-in-out; -ms-animation: fade 0.5s alternate infinite ease-in-out; }
-#projects-board.unsuccessful-projects .wrapper article.project.building h1 a { color: #b39700; text-shadow: 1px 1px 0 #ffd700; }
-#projects-board.unsuccessful-projects .wrapper article.project.building p { color: #b39700; }
+#projects-board.unsuccessful-projects .wrapper article.project.building h1 a { color: #fff; text-shadow: 1px 1px 0 #ffd700; }
+#projects-board.unsuccessful-projects .wrapper article.project.building p { color: #fff; }
 #projects-board.unsuccessful-projects .wrapper article.project p.status { margin-top: 20px; }
 
 @keyframes 'fade' { 0% { opacity: 1.0; }

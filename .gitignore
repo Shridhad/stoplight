@@ -1,6 +1,7 @@
 .bundle
 .rvmrc
 .sass-cache
+.DS_Store
 config/servers.yml
 log
 tmp

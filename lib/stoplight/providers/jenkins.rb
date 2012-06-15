@@ -10,10 +10,6 @@ module Stoplight::Providers
       'jenkins'
     end
 
-    def builds_path
-      @options['builds_path'] ||= '/cc.xml'
-    end
-
     def projects
       @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
         Stoplight::Project.new({
@@ -32,6 +28,8 @@ module Stoplight::Providers
     def get_culprits(name)
     	# grab fullName, and the address property from the users who are culprits on the last build
       response = load_server_data(:path => "/job/#{name}/lastBuild/api/json?tree=culprits[fullName,property[address]]")
+
+      return [] if response.parsed_response['culprits'].nil?
 
       # for each culprit in culprits get their fullName and email and store it as a hash
       culprits = response.parsed_response['culprits'].collect do |culprit|

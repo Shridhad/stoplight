@@ -20,14 +20,14 @@ module Stoplight::Providers
         @projects ||= []
       else
         @projects ||= @response.parsed_response.collect do |project|
-          Stoplight::Project.new({
+          project = Stoplight::Project.new({
             :name => project['slug'].split(/\//).last,
             :build_url => "http://travis-ci.org/#{project['slug']}",
             :last_build_id => project['last_build_number'].to_s,
             :last_build_time => project['last_build_finished_at'],
             :last_build_status => status_to_int(project['last_build_status']),
             :current_status => current_status_to_int(project['last_build_finished_at']),
-            :culprits => get_culprits(project['slug'])
+            :culprits => @options['culprits'] ? get_culprits(project['slug']) : []
           })
         end
       end

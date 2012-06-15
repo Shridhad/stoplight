@@ -29,9 +29,9 @@ describe Travis do
       it 'should have the correct default project attributes' do
         project = @provider.projects.first
 
-        project.name.should == 'salt'
-        project.build_url.should == 'http://travis-ci.org/saltstack/salt'
-        project.last_build_id.should == '323'
+        project.name.should == 'fpm'
+        project.build_url.should == 'http://travis-ci.org/jordansissel/fpm'
+        project.last_build_id.should == '68'
         project.last_build_time.should == nil
       end
 
@@ -41,16 +41,12 @@ describe Travis do
         projects[0].last_build_status.should == 'unknown'
         projects[0].current_status.should == 'building'
 
-        projects[3].last_build_status.should == 'passed'
-        projects[3].current_status.should == 'done'
+        projects[1].last_build_status.should == 'failed'
+        projects[1].current_status.should == 'done'
 
-        projects[5].last_build_status.should == 'failed'
-        projects[2].current_status.should == 'building'
+        projects[10].last_build_status.should == 'passed'
+        projects[10].current_status.should == 'done'
       end
-    end
-
-    context 'culprits' do
-
     end
   end
 end

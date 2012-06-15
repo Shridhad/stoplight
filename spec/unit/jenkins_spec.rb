@@ -10,7 +10,7 @@ describe Jenkins do
 
   context 'provider' do
     it 'should return the correct provider name' do
-      provider = Jenkins.new('url' => 'http://ci.jenkins-ci.org/')
+      provider = Jenkins.new('url' => 'http://ci.jenkins-ci.org')
       provider.provider.should == 'jenkins'
     end
   end
@@ -18,7 +18,7 @@ describe Jenkins do
   context 'projects' do
     context 'culprits' do
       it 'should return a list of the culprits who broke the build' do
-        provider = Jenkins.new('url' => 'http://ci.jenkins-ci.org/')
+        provider = Jenkins.new('url' => 'http://ci.jenkins-ci.org', 'culprits' => true)
         project = provider.projects.select{ |p| !p.culprits.empty? }.first
 
         project.culprits.class.should == Array

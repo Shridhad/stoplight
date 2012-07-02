@@ -2,6 +2,7 @@
 # This is a base provider that all providers must inherit from
 #
 require 'httparty'
+require 'rack/commonlogger'
 require 'uri'
 
 # Provider is an abstract class that all providers inherit from. It requires that a specified format be returned. This way, stoplight
@@ -75,6 +76,9 @@ module Stoplight::Providers
 
       http_method = options[:method] || 'get'
       return HTTParty.send(http_method.downcase.to_sym, url, url_options)
+    rescue Exception => e
+      $logger.error "#{e.to_s}: Could not connect to `#{url}`"
+      return false
     end
   end
 end

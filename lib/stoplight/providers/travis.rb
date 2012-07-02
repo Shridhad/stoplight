@@ -16,7 +16,7 @@ module Stoplight::Providers
     end
 
     def projects
-      if @response.parsed_response.nil?
+      if @response.nil? || @response.parsed_response.nil?
         @projects ||= []
       else
         @projects ||= @response.parsed_response.collect do |project|

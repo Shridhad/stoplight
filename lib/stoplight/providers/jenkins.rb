@@ -14,8 +14,19 @@ module Stoplight::Providers
       if @response.nil? || @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
         @projects ||= []
       else
-        @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
-          project = Stoplight::Project.new({
+        # Jenkins doesn't return an array when there's only one job...
+        @projects ||= [@response.parsed_response['Projects']['Project']].flatten.collect do |project|
+          puts "\n\n\n\n"
+          p @response
+          puts "\n\n"
+          p @response.parsed_response
+          puts "\n\n"
+          puts @response.parsed_response['Projects']
+          puts "\n\n"
+          puts @response.parsed_response['Projects']['Project']
+          puts "\n\n\n\n"
+
+          Stoplight::Project.new({
            :name => project['name'],
            :build_url => project['webUrl'],
            :last_build_id => project['lastBuildLabel'],

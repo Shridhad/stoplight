@@ -5,6 +5,11 @@ require 'httparty'
 require 'rack/commonlogger'
 require 'uri'
 
+unless $logger
+  require 'logger'
+  $logger = Logger.new('log/application.log')
+end
+
 # Provider is an abstract class that all providers inherit from. It requires that a specified format be returned. This way, stoplight
 # doesn't care who it's talking to, as long as it guarantees certain information.
 module Stoplight::Providers
@@ -75,7 +80,14 @@ module Stoplight::Providers
       url_options.delete_if { |k,v| v.nil? }
 
       http_method = options[:method] || 'get'
-      return HTTParty.send(http_method.downcase.to_sym, url, url_options)
+      response = HTTParty.send(http_method.downcase.to_sym, url, url_options)
+
+      if [200, 301, 302].include?(response.code)
+        return response
+      else
+        $logger.error "Response code for #{url} was #{response.code}"
+        nil
+      end
     rescue Exception => e
       $logger.error "#{e.to_s}: `#{url}`"
       nil

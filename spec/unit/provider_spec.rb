@@ -22,12 +22,6 @@ describe Provider do
       end
     end
 
-    context 'with an invalid :url parameter' do
-      it 'should raise an exception' do
-        lambda { Provider.new('url' => 'not_a_url') }.should raise_error
-      end
-    end
-
     context 'with a valid :url parameter' do
       it 'should not raise an exception' do
         lambda { Provider.new('url' => 'http://www.example.com') }.should_not raise_error(ArgumentError)
@@ -73,29 +67,44 @@ describe Provider do
         end
       end
 
-      context 'with proxy settings defined' do 
+      context 'with proxy settings defined' do
         before do
           stub_request(:any, 'http://www.example.com').to_return(:status => 200)
         end
 
-        it "should set :http_proxyaddr" do
+        it 'should set :http_proxyaddr' do
           provider = Provider.new('url' => 'http://www.example.com', 'http_proxyaddr' => 'proxy')
           provider.response.request.options[:http_proxyaddr].should == 'proxy'
         end
 
-        it "should set :http_proxyport" do
+        it 'should set :http_proxyport' do
           provider = Provider.new('url' => 'http://www.example.com', 'http_proxyport' => '8000')
           provider.response.request.options[:http_proxyport].should == '8000'
         end
 
-        it "should set :http_proxyuser" do
+        it 'should set :http_proxyuser' do
           provider = Provider.new('url' => 'http://www.example.com', 'http_proxyuser' => 'username')
           provider.response.request.options[:http_proxyuser].should == 'username'
         end
 
-        it "should set :http_proxypass" do
+        it 'should set :http_proxypass' do
           provider = Provider.new('url' => 'http://www.example.com', 'http_proxypass' => 'password')
-          provider.response.request.options[:http_proxypass].should == 'password'          
+          provider.response.request.options[:http_proxypass].should == 'password'
+        end
+      end
+
+      context 'with bad response' do
+        FAIL_CODES = [400, 401, 404, 500].freeze
+
+        FAIL_CODES.each do |code|
+          before do
+            stub_request(:any, "http://www.example.com/#{code}").to_return(:status => code)
+          end
+
+          it "should return nil when the response code is #{code}" do
+            provider = Provider.new('url' => "http://www.example.com/#{code}")
+            provider.response.should be_nil
+          end
         end
       end
     end

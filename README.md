@@ -1,6 +1,6 @@
 Stoplight
 =========
-[![Build Status](https://secure.travis-ci.org/customink/greenscreen.png?branch=master)](http://travis-ci.org/customink/greenscreen)
+[![Build Status](https://secure.travis-ci.org/customink/stoplight.png?branch=master)](http://travis-ci.org/customink/stoplight)
 
 Introduction
 ------------

@@ -11,7 +11,3 @@ render_all = ()->
   setInterval refresh_data, 5*1000
 
 Projects.fetch success: render_all
-
-
-
-

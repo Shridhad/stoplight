@@ -13,9 +13,12 @@ gem 'rabl'
 
 group :development do
   gem 'growl'
+  gem 'guard-compass'
+  gem 'guard-coffeescript'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'shotgun'
+  gem 'therubyracer'
 end
 
 group :test do

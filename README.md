@@ -84,6 +84,9 @@ Conversely, you can choose to only show certain projects with the `projects` opt
 
 Contributing
 ------------
+The development environment is configured with all kinds of goodies like Spork, Guard, and Foreman. If you're developing, just run `foreman start` and code! As you write tests and code, Guard will run the tests, Spork will make it fast, and Growl will tell you if they passed or failed!
+
+### Providers
 One of the larger goals of Stoplight was to server the open source community. As more Continuous Integration servers emerge, we needed a common DSL for interacting with them. This all arose when we wanted to add Travis CI support to Greenscreen. Greenscreen was written for CI's that conform to a standard that doesn't even exist anymore. Stoplight doesn't care how the data comes in from the provider!
 
 A `Provider` is really just a ruby class that defines two methods:
@@ -102,12 +105,14 @@ end
 
 The `provider` method is just a utility method that returns the name of the provider. The `projects` method is the "magical" method. This is where a developer parses the data into the given specification. You should take a look in `lib/stoplight/providers/sample.rb` for a good starting point.
 
-The development environment is configured with all kinds of goodies like Spork, Guard, and Foreman. If you're developing, just run `foreman start` and code! As you write tests and code, Guard will run the tests, Spork will make it fast, and Growl will tell you if they passed or failed!
+### Views/Styles/Layouts
+If you are looking to change the design, add styles or javascripts, you'll need to know a little bit about the architecture of the application.
 
+- **All** javascript should be written in coffeescript. The coffeescript files live in `app/assets/javascripts`. They are compiled to `public/javascripts`.
+- **All** css should be written in scss + compass. The scss files live in `app/assets/stylesheets`. They are compiled to `public/stylesheets`.
 
 Deployment
 ----------
-
 Deploying Green Screen to [Heroku](http://www.heroku.com) is a snap.
 
 Of course, if your build servers aren't publicly accessible, Heroku won't be a great option. A [Chef Cookbook for deploying Stoplight](http://community.opscode.com/cookbooks/stoplight) is available on [the Opscode Community site](http://community.opscode.com).  You can read more about both options in [Nathen Harvey's blog](http://nathenharvey.com/blog/2012/01/02/deploying-green-screen/). Note that, in his post, Nathen talks about Greenscreen. Stoplight can be deployed in the same manner.

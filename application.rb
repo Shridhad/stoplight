@@ -2,13 +2,16 @@ configure {
   set :root, File.dirname(__FILE__)
 }
 
+get '/foo' do
+  status 200
+end
 
 #
-# GET /
+# GET /projects.json
 #
 # Load the initial build screen
 #
-get '/' do
+get '/projects.json' do
   load_projects
 
   @successful_projects = @projects.select { |project| project.passed? }
@@ -25,11 +28,7 @@ get '/' do
   @rows = (@unsuccessful_projects.size / @columns).ceil
   @rows = [@rows, 1.0].max
 
-  if params['format'] == 'json'
-    render :rabl, :index, :format => 'json'
-  else
-    erb :index
-  end
+  render :rabl, :index, :format => 'json'
 end
 
 #

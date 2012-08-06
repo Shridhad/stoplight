@@ -2,7 +2,7 @@
 .rvmrc
 .sass-cache
 config/servers.yml
-log
+log/*.log
 tmp
 vendor/ruby
 vendor/cache

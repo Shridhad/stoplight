@@ -16,13 +16,13 @@ module Stoplight::Providers
     end
 
     def projects
-      if @response.parsed_response.nil?
+      if @response.nil? || @response.parsed_response.nil?
         @projects ||= []
       else
         @projects ||= @response.parsed_response.collect do |project|
           project = Stoplight::Project.new({
             :name => project['slug'].split(/\//).last,
-            :build_url => "http://travis-ci.org/#{project['slug']}",
+            :build_url => "#{options['url']}/#{project['slug']}",
             :last_build_id => project['last_build_number'].to_s,
             :last_build_time => project['last_build_finished_at'],
             :last_build_status => status_to_int(project['last_build_status']),

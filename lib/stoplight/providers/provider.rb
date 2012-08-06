@@ -2,7 +2,13 @@
 # This is a base provider that all providers must inherit from
 #
 require 'httparty'
+require 'rack/commonlogger'
 require 'uri'
+
+unless $logger
+  require 'logger'
+  $logger = Logger.new('log/application.log')
+end
 
 # Provider is an abstract class that all providers inherit from. It requires that a specified format be returned. This way, stoplight
 # doesn't care who it's talking to, as long as it guarantees certain information.
@@ -63,13 +69,28 @@ module Stoplight::Providers
         }
       end
 
+      url_options[:http_proxyaddr] ||= @options['http_proxyaddr']
+      url_options[:http_proxyport] ||= @options['http_proxyport']
+      url_options[:http_proxyuser] ||= @options['http_proxyuser']
+      url_options[:http_proxypass] ||= @options['http_proxypass']
+
       # merge with any additional options provided
       url_options.merge(options[:url_options]) if options[:url_options]
 
       url_options.delete_if { |k,v| v.nil? }
 
       http_method = options[:method] || 'get'
-      return HTTParty.send(http_method.downcase.to_sym, url, url_options)
+      response = HTTParty.send(http_method.downcase.to_sym, url, url_options)
+
+      if [200, 301, 302].include?(response.code)
+        return response
+      else
+        $logger.error "Response code for #{url} was #{response.code}"
+        nil
+      end
+    rescue Exception => e
+      $logger.error "#{e.to_s}: `#{url}`"
+      nil
     end
   end
 end

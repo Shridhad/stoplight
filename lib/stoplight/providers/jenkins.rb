@@ -11,11 +11,12 @@ module Stoplight::Providers
     end
 
     def projects
-      if @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
+      if @response.nil? || @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
         @projects ||= []
       else
-        @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
-          project = Stoplight::Project.new({
+        # Jenkins doesn't return an array when there's only one job...
+        @projects ||= [@response.parsed_response['Projects']['Project']].flatten.collect do |project|
+          Stoplight::Project.new({
            :name => project['name'],
            :build_url => project['webUrl'],
            :last_build_id => project['lastBuildLabel'],
@@ -33,7 +34,7 @@ module Stoplight::Providers
     	# grab fullName, and the address property from the users who are culprits on the last build
       response = load_server_data(:path => "/job/#{name}/lastBuild/api/json?tree=culprits[fullName,property[address]]")
 
-      return [] if response.parsed_response['culprits'].nil?
+      return [] if response.nil? || response.parsed_response.nil? || response.parsed_response['culprits'].nil?
 
       # for each culprit in culprits get their fullName and email and store it as a hash
       culprits = response.parsed_response['culprits'].collect do |culprit|

@@ -19,10 +19,10 @@ module Stoplight::Providers
     end
 
     def projects
-      if @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
+      if @response.nil? || @response.parsed_response.nil? || @response.parsed_response['Projects'].nil?
         @projects ||= []
       else
-        @projects ||= @response.parsed_response['Projects']['Project'].collect do |project|
+        @projects ||= [@response.parsed_response['Projects']['Project']].flatten.collect do |project|
           Stoplight::Project.new({
             :name => project['name'],
             :build_url => project['webUrl'],

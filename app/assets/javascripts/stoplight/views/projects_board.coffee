@@ -27,10 +27,12 @@ class Views.ProjectsBoard extends Backbone.View
   _setDimensions: ->
     columnSplits = [0, 3, 10, 21, @_size]
 
-    columns = _(columnSplits.sort((a,b)-> a > b)).indexOf(@_size)
+    columns = _(columnSplits.sort((a,b)-> a - b)).indexOf(@_size)
     rows = Math.max(Math.ceil(@_size / columns), 1.0)
 
     [@_tile_width, @_tile_height] = [(100 / columns), (100 / rows)]
+
+    console.log [@_tile_width, columns, @_tile_height, rows, @_size]
 
   _setFontSizes: ->
     $.each $('#projects-board .project'), (index, element) ->

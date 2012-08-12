@@ -42,10 +42,11 @@
       var columnSplits, columns, rows, _ref1;
       columnSplits = [0, 3, 10, 21, this._size];
       columns = _(columnSplits.sort(function(a, b) {
-        return a > b;
+        return a - b;
       })).indexOf(this._size);
       rows = Math.max(Math.ceil(this._size / columns), 1.0);
-      return _ref1 = [100 / columns, 100 / rows], this._tile_width = _ref1[0], this._tile_height = _ref1[1], _ref1;
+      _ref1 = [100 / columns, 100 / rows], this._tile_width = _ref1[0], this._tile_height = _ref1[1];
+      return console.log([this._tile_width, columns, this._tile_height, rows, this._size]);
     };
 
     ProjectsBoard.prototype._setFontSizes = function() {

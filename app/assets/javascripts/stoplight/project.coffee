@@ -19,7 +19,7 @@ class Models.Project extends Backbone.Model
     hash = _.clone(@attributes)
 
     hash.ignored_klass =
-      ((@get('ignored') and "ignoring") or "watching")
+      ((@get('ignored') and "ignored") or "watching")
 
     hash.human_last_build_time =
       if hash.last_build_time isnt "unknown"

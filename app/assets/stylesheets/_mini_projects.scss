@@ -12,8 +12,8 @@ aside#projects-list {
   top: 0;
   left: 0;
   bottom: -1px; // to offset the border-bottom on the last element iff the list > 100% height
-  
-  a.watching {
+
+  a {
     @include background-image(linear-gradient(#eee, #ccc));
     border-bottom: 1px solid #777;
     @include box-shadow(inset, 0 1px 0 rgba(0,0,0,.3));
@@ -69,73 +69,42 @@ aside#projects-list {
     &.building:before {
       color: $yellow !important;
     }
-  }
 
-  a.ignoring {
-    @include background-image(linear-gradient(#777, #555));
-    border-bottom: 1px solid #777;
-    @include box-shadow(inset, 0 1px 0 rgba(255,255,255,.3));
-    color: #eee;
-    display: block;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 5px 0 15px 25px;
-    position: relative;
-    text-decoration: none;
-    text-shadow: 0 1px 0 rgba(0,0,0,.8);
-    white-space: nowrap;
-
-    &:hover {
-      @include background-image(linear-gradient(#fafafa, #ddd));
-    }
-
-    &:active {
-      background: #ddd;
-    }
-
-    &:focus {
-      background: #ddd;
-      outline: 0;
-    }
-
-    &:before {
-      background: #ccc;
-      background: rgba(0,0,0,.1);
-      @include box-shadow(1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5));
-      content: '\2022';
+    time.last-build-time {
       float: left;
-      font-size: 50px;
-      line-height: 35px;
+      font-size: 9px;
       overflow: hidden;
       position: absolute;
-      text-align: center;
-      width: 20px;
 
-      top: 0;
-      bottom: 0;
-      left: 0;
+      left: 25px;
+      top: 20px;
     }
 
-    &.passed:before {
-      color: $green;
+    &.ignored {
+      color: $dark-gray*3.5;
+      padding: 10px 0 10px 25px;
+      text-shadow: 0 1px 0 #fff;
+
+      &:hover {
+        @include background-image(linear-gradient(#fafafa, #ddd));
+      }
+
+      &:active {
+        background: #ddd;
+      }
+
+      &:focus {
+        background: #ddd;
+        outline: 0;
+      }
+
+      &:before {
+        content: '';
+      }
+
+      time.last-build-time {
+        display: none;
+      }
     }
-
-    &.failed:before {
-      color: $red;
-    }
-
-    &.building:before {
-      color: $yellow !important;
-    }
-  }
-
-  time.last-build-time {
-    float: left;
-    font-size: 9px;
-    overflow: hidden;
-    position: absolute;
-
-    left: 25px;
-    top: 20px;
   }
 }

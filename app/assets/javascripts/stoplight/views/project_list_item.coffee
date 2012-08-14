@@ -5,27 +5,26 @@ class Views.ProjectListItem extends Backbone.View
   className: 'project-list-item'
 
   events: {
-   "click .ignore" : "_toggleIgnore"
+   'click .project':'_toggleIgnore'
   }
 
-  initialize: (options)->
+  initialize: (options) ->
     @model.on('change:ignored', @render)
 
   template: _.template(
     """
-      <a href="{{ build_url }}" class="project {{ last_build_status }} {{ current_status }} {{ ignored_klass }}" target="_TOP">
+      <a href="#toggle-ignore" class="project {{ last_build_status }} {{ current_status }} {{ ignored_klass }}">
         {{ name }}
         <time class="last-build-time invisible" datetime="{{ last_build_time }}" title="{{ human_last_build_time }}">
           {{ human_last_build_time }}
         </time>
       </a>
-      <button class="ignore"></button>
     """)
 
-  render:()=>
+  render: =>
     @$el.html @template(@model.toJSON())
+    @
 
-    this
-
-  _toggleIgnore: =>
+  _toggleIgnore: (event) ->
+    event.preventDefault()
     @model.toggleIgnore()

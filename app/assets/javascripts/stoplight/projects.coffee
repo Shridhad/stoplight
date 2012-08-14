@@ -10,6 +10,5 @@ class Collections.Projects extends Backbone.Collection
   failing_watched_projects: ->
     @where({last_build_status: 'failed', ignored: false})
 
-
   success: ->
     @failing_watched_projects().length is 0

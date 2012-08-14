@@ -17,8 +17,17 @@
       return ProjectsList.__super__.constructor.apply(this, arguments);
     }
 
+    ProjectsList.prototype.shortcuts = {
+      't': '_toggleMiniProjects'
+    };
+
     ProjectsList.prototype.initialize = function(options) {
       this.collection.on('reset', this.render);
+      _.extend(this, new Backbone.Shortcuts);
+      this.delegateShortcuts();
+      if (localStorage && localStorage.getItem('hide-mini-projects') === 'true') {
+        this._toggleMiniProjects();
+      }
       return this.render();
     };
 
@@ -33,6 +42,14 @@
         model: item
       });
       return this.$el.append(view.render().el);
+    };
+
+    ProjectsList.prototype._toggleMiniProjects = function() {
+      $('#projects-board').toggleClass('expanded');
+      $(this.el).toggleClass('collapsed');
+      if (localStorage) {
+        return localStorage.setItem('hide-mini-projects', !!$(this.el).hasClass('collapsed'));
+      }
     };
 
     return ProjectsList;

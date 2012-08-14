@@ -17,10 +17,6 @@
 
     Projects.prototype.url = '/projects.json';
 
-    Projects.prototype.comparator = function(project) {
-      return new Date(project.get('last_build_time')).getTime() * -1;
-    };
-
     Projects.prototype.failing_watched_projects = function() {
       return this.where({
         last_build_status: 'failed',

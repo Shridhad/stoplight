@@ -13,6 +13,10 @@ aside#projects-list {
   left: 0;
   bottom: -1px; // to offset the border-bottom on the last element iff the list > 100% height
 
+  &.collapsed {
+    display: none;
+  }
+
   a {
     @include background-image(linear-gradient(#eee, #ccc));
     border-bottom: 1px solid #777;

@@ -1,6 +1,7 @@
 [$, _, Backbone, Models, Collections, Views] = [@jQuery, @_, @Backbone, @Stoplight.Models, @Stoplight.Collections, @Stoplight.Views]
 
 class Views.ProjectsBoard extends Backbone.View
+
   initialize: (options) ->
     @collection.on('change', @render)
     @collection.on('reset',  @render)

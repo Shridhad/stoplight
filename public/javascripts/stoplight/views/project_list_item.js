@@ -11,8 +11,6 @@
     __extends(ProjectListItem, _super);
 
     function ProjectListItem() {
-      this._toggleIgnore = __bind(this._toggleIgnore, this);
-
       this.render = __bind(this.render, this);
       return ProjectListItem.__super__.constructor.apply(this, arguments);
     }
@@ -22,21 +20,22 @@
     ProjectListItem.prototype.className = 'project-list-item';
 
     ProjectListItem.prototype.events = {
-      "click .ignore": "_toggleIgnore"
+      'click .project': '_toggleIgnore'
     };
 
     ProjectListItem.prototype.initialize = function(options) {
       return this.model.on('change:ignored', this.render);
     };
 
-    ProjectListItem.prototype.template = _.template("<a href=\"{{ build_url }}\" class=\"project {{ last_build_status }} {{ current_status }} {{ ignored_klass }}\" target=\"_TOP\">\n  {{ name }}\n  <time class=\"last-build-time invisible\" datetime=\"{{ last_build_time }}\" title=\"{{ human_last_build_time }}\">\n    {{ human_last_build_time }}\n  </time>\n</a>\n<button class=\"ignore\"></button>");
+    ProjectListItem.prototype.template = _.template("<a href=\"#toggle-ignore\" class=\"project {{ last_build_status }} {{ current_status }} {{ ignored_klass }}\">\n  {{ name }}\n  <time class=\"last-build-time invisible\" datetime=\"{{ last_build_time }}\" title=\"{{ human_last_build_time }}\">\n    {{ human_last_build_time }}\n  </time>\n</a>");
 
     ProjectListItem.prototype.render = function() {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     };
 
-    ProjectListItem.prototype._toggleIgnore = function() {
+    ProjectListItem.prototype._toggleIgnore = function(event) {
+      event.preventDefault();
       return this.model.toggleIgnore();
     };
 

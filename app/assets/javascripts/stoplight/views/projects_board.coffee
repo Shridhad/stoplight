@@ -1,6 +1,7 @@
 [$, _, Backbone, Models, Collections, Views] = [@jQuery, @_, @Backbone, @Stoplight.Models, @Stoplight.Collections, @Stoplight.Views]
 
 class Views.ProjectsBoard extends Backbone.View
+
   initialize: (options) ->
     @collection.on('change', @render)
     @collection.on('reset',  @render)
@@ -31,8 +32,6 @@ class Views.ProjectsBoard extends Backbone.View
     rows = Math.max(Math.ceil(@_size / columns), 1.0)
 
     [@_tile_width, @_tile_height] = [(100 / columns), (100 / rows)]
-
-    console.log [@_tile_width, columns, @_tile_height, rows, @_size]
 
   _setFontSizes: ->
     $.each $('#projects-board .project'), (index, element) ->

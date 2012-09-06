@@ -35,10 +35,11 @@
     };
 
     Project.prototype.toJSON = function() {
-      var hash;
+      var hash, time;
       hash = _.clone(this.attributes);
       hash.ignored_klass = (this.get('ignored') && "ignored") || "watching";
-      hash.human_last_build_time = hash.last_build_time !== "unknown" ? $.timeago(hash.last_build_time) : "unknown";
+      time = hash.last_build_time;
+      hash.human_last_build_time = (time != null) && time !== "unknown" ? $.timeago(hash.last_build_time) : "unknown";
       return hash;
     };
 

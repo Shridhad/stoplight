@@ -17,12 +17,13 @@ class Models.Project extends Backbone.Model
 
   toJSON: ->
     hash = _.clone(@attributes)
-
+    
     hash.ignored_klass =
       ((@get('ignored') and "ignored") or "watching")
 
+    time = hash.last_build_time
     hash.human_last_build_time =
-      if hash.last_build_time isnt "unknown"
+      if time? and time  isnt "unknown"
         $.timeago(hash.last_build_time)
       else
         "unknown"

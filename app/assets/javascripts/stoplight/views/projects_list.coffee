@@ -18,7 +18,10 @@ class Views.ProjectsList extends Backbone.View
     @render()
 
   render: =>
+    @$el.empty()
+    
     @collection.each(@_renderProjectListItem)
+    
     @
 
   _renderProjectListItem: (item) =>

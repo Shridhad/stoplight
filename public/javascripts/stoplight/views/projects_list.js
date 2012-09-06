@@ -32,6 +32,7 @@
     };
 
     ProjectsList.prototype.render = function() {
+      this.$el.empty();
       this.collection.each(this._renderProjectListItem);
       return this;
     };

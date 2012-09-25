@@ -117,6 +117,8 @@ Deploying Green Screen to [Heroku](http://www.heroku.com) is a snap.
 
 Of course, if your build servers aren't publicly accessible, Heroku won't be a great option. A [Chef Cookbook for deploying Stoplight](http://community.opscode.com/cookbooks/stoplight) is available on [the Opscode Community site](http://community.opscode.com).  You can read more about both options in [Nathen Harvey's blog](http://nathenharvey.com/blog/2012/01/02/deploying-green-screen/). Note that, in his post, Nathen talks about Greenscreen. Stoplight can be deployed in the same manner.
 
+[William Durand](https://github.com/willdurand) also ported a [Puppet Module for installing Stoplight](https://github.com/willdurand/puppet-stoplight).
+
 Credits
 -------
  - GreenScreen was original developed by [martinjandrews](https://github.com/martinjandrews/greenscreen/).

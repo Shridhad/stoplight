@@ -1,6 +1,6 @@
 module Stoplight
   class Project
-    attr_accessor :name, :build_url, :last_build_id, :last_build_time, :last_build_status, :current_status, :culprits
+    attr_accessor :name, :build_url, :last_build_id, :last_build_time, :last_build_status, :current_status
 
     # Initialize (new) takes in a hash of options in the following format:
     #
@@ -26,8 +26,6 @@ module Stoplight
     #   - -1: unknown
     #   -  0: done (sleeping, waiting)
     #   -  1: building (building, working, compiling)
-    # - `culprits` - the people who broke the build. This should be a hash in the following format:
-    #   { 'name' => '...', 'gravatar' => '...' }
     def initialize(options = {})
       @options = options
 
@@ -37,7 +35,6 @@ module Stoplight
       @last_build_time = parse_date(options[:last_build_time])
       @last_build_status = parse_last_build_status(options[:last_build_status])
       @current_status = parse_current_status(options[:current_status])
-      @culprits = options[:culprits]
     end
 
     def building?
@@ -54,6 +51,10 @@ module Stoplight
 
     def failed?
       @last_build_status == 'failed'
+    end
+
+    def <=>(other_project)
+      self.name.downcase <=> other_project.name.downcase
     end
 
     private

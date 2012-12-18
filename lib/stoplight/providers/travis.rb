@@ -26,8 +26,7 @@ module Stoplight::Providers
             :last_build_id => project['last_build_number'].to_s,
             :last_build_time => project['last_build_finished_at'],
             :last_build_status => status_to_int(project['last_build_status']),
-            :current_status => current_status_to_int(project['last_build_finished_at']),
-            :culprits => @options['culprits'] ? get_culprits(project['slug']) : []
+            :current_status => current_status_to_int(project['last_build_finished_at'])
           })
         end
       end
@@ -46,19 +45,6 @@ module Stoplight::Providers
       rescue ArgumentError
         -1
       end
-    end
-
-    def get_culprits(slug)
-      response = load_server_data(:path => "/#{slug}/builds.json")
-
-      return [] if !response.parsed_response.is_a?(Array) || response.parsed_response.first.nil?
-
-      culprits = response.parsed_response.first['matrix'].collect do |commit|
-        hash = Digest::MD5.hexdigest(commit['author_email'].downcase)
-        { 'user' => commit['author_name'], 'gravatar' => "http://www.gravatar.com/avatar/#{hash}.jpg" }
-      end
-
-      culprits.uniq
     end
   end
 end

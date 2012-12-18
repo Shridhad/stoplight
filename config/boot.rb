@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require 'timeout'
 
 Bundler.require
 require 'active_support/inflector'

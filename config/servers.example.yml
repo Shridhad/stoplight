@@ -6,11 +6,6 @@
 # The `projects` and `ignored_projects` options are optional. By default, Stoplight
 # will use all projects returned from the given url. If you want to blacklist,
 # use `ignored_projects`. If you want to whitelist, use `projects`.
-#
-# The `culprits` option is false by default. If enabled, it will provide
-# show the gravatars of the user's who broke the builds. However, for most
-# providers, this entails making additional HTTP request, which can slow
-# Stoplight's performance.
 
 # Example Jenkis configuration
 # -
@@ -18,7 +13,6 @@
 #   url: https://ci.jenkins-ci.org
 #   username: my_username
 #   password: my_password
-#   culprits: false
 #   projects:
 #     - mail    # build named "mail"
 #     - /^test/ # all builds starting with "test"
@@ -31,7 +25,6 @@
 #   type: 'travis'
 #   url: http://travis-ci.org
 #   owner_name: my_projects # usually your github username
-#   culprits: true
 #   projects:
 #     - mail    # build named "mail"
 #     - /^test/ # all builds starting with "test"

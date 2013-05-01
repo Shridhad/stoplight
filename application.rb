@@ -3,6 +3,15 @@ configure {
 }
 
 #
+# GET /
+#
+# Load the static HTML file
+#
+get '/' do
+  send_file File.join(settings.public_folder, 'index.html')
+end
+
+#
 # GET /projects.json
 #
 # Load the initial build screen

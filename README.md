@@ -36,7 +36,7 @@ If you want to get up and running quickly and just see what Stoplight looks like
 ```yaml
 -
   type: 'travis'
-  url: http://travis-ci.org/repositories.json
+  url: http://travis-ci.org
   owner_name: github_username
 ```
 

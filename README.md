@@ -114,7 +114,7 @@ If you are looking to change the design, add styles or javascripts, you'll need 
 
 Deployment
 ----------
-Deploying stoplight to [Heroku](http://www.heroku.com) is a snap.
+Deploying Stoplight to [Heroku](http://www.heroku.com) is a snap.
 
 Of course, if your build servers aren't publicly accessible, Heroku won't be a great option. A [Chef Cookbook for deploying Stoplight](http://community.opscode.com/cookbooks/stoplight) is available on [the Opscode Community site](http://community.opscode.com).  You can read more about both options in [Nathen Harvey's blog](http://nathenharvey.com/blog/2012/01/02/deploying-green-screen/). Note that, in his post, Nathen talks about Greenscreen. Stoplight can be deployed in the same manner.
 

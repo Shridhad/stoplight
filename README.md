@@ -27,9 +27,9 @@ And then bundle all the application's dependencies:
 
     bundle install
 
-Next, copy the `config/servers.yml.example` file to `config/servers.yml`:
+Next, copy the `config/servers.example.yml` file to `config/servers.yml`:
 
-    cp config/servers.yml.example config/servers.yml
+    cp config/servers.example.yml config/servers.yml
 
 If you want to get up and running quickly and just see what Stoplight looks like, add the following to your configuration file. It will pull from Travis CI:
 
@@ -37,6 +37,7 @@ If you want to get up and running quickly and just see what Stoplight looks like
 -
   type: 'travis'
   url: http://travis-ci.org/repositories.json
+  owner_name: github_username
 ```
 
 Start the server with the `rackup` command:
@@ -113,7 +114,7 @@ If you are looking to change the design, add styles or javascripts, you'll need 
 
 Deployment
 ----------
-Deploying Green Screen to [Heroku](http://www.heroku.com) is a snap.
+Deploying stoplight to [Heroku](http://www.heroku.com) is a snap.
 
 Of course, if your build servers aren't publicly accessible, Heroku won't be a great option. A [Chef Cookbook for deploying Stoplight](http://community.opscode.com/cookbooks/stoplight) is available on [the Opscode Community site](http://community.opscode.com).  You can read more about both options in [Nathen Harvey's blog](http://nathenharvey.com/blog/2012/01/02/deploying-green-screen/). Note that, in his post, Nathen talks about Greenscreen. Stoplight can be deployed in the same manner.
 

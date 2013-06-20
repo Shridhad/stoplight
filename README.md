@@ -7,7 +7,7 @@ Introduction
 Stoplight is a build monitoring tool that is largely based off [greenscreen](https://github.com/martinjandrews/greenscreen), but is much improved and expandable. To quickly name a few, Stoplight has:
 
  - built-in support for [Jenkins](http://www.jenkis-ci.org)
- - built-in support for Travis-CI(http://travis-ci.org)
+ - built-in support for [Travis-CI](http://travis-ci.org)
  - custom provider support
  - community contributions
  - full test suite

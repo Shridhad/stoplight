@@ -23,7 +23,7 @@
 # Example Travis configuration
 # -
 #   type: 'travis'
-#   url: http://travis-ci.org
+#   url: http://api.travis-ci.org
 #   owner_name: my_projects # usually your github username
 #   projects:
 #     - mail    # build named "mail"

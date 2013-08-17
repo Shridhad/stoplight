@@ -3,9 +3,9 @@
 #
 require 'xmlsimple'
 module Stoplight::Providers
-  class Go < MultiProjectStandard
+  class ThoughtworksGo < MultiProjectStandard
     def provider
-      'go'
+      'thoughtworks_go'
     end
 
     def builds_path

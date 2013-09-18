@@ -57,27 +57,26 @@ def load_projects
   @servers ||= YAML::load(File.read('config/servers.yml'))
 
   @projects = @servers.collect do |server|
-    Thread.new do
-      server_projects = Timeout::timeout(5) do
-        get_server(server).projects
-      end
+  
+    server_projects = get_server(server).projects
+    
 
-      # if server['projects'] is defined, we only want those projects
-      Thread.current['projects'] = if server['projects']
-        regexes = collect_regexes(server['projects'])
-        server_projects.select { |server_project|
-          regexes.any?{ |regex| server_project.name =~ regex }
-        }
-      elsif server['ignored_projects']
-        regexes = collect_regexes(server['ignored_projects'])
-        server_projects.reject { |server_project|
-          regexes.any?{ |regex| server_project.name =~ regex }
-        }
-      else
-        server_projects
-      end
+    # if server['projects'] is defined, we only want those projects
+    if server['projects']
+      regexes = collect_regexes(server['projects'])
+      server_projects.select { |server_project|
+        regexes.any?{ |regex| server_project.name =~ regex }
+      }
+    elsif server['ignored_projects']
+      regexes = collect_regexes(server['ignored_projects'])
+      server_projects.reject { |server_project|
+        regexes.any?{ |regex| server_project.name =~ regex }
+      }
+    else
+      server_projects
     end
-  end.map(&:join).collect{ |t| t['projects'] }.compact.flatten.sort
+    
+  end.compact.flatten.sort
 end
 
 def collect_regexes(projects)

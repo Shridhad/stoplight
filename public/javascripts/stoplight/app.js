@@ -18,7 +18,7 @@
       collection: App.projects,
       el: $('#projects-list')
     });
-    return setInterval(refresh_data, 5000);
+    return setInterval(refresh_data, 15000);
   });
 
 }).call(this);

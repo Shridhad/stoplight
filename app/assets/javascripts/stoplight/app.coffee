@@ -11,5 +11,5 @@ $(document).ready( ->
   new Views.ProjectsBoard({collection: App.projects, el: $('#projects-board')})
   new Views.ProjectsList({collection: App.projects, el: $('#projects-list')})
 
-  setInterval(refresh_data , 5000)
+  setInterval(refresh_data , 15000)
 )

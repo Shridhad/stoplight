@@ -57,11 +57,11 @@
         $p = $element.find('p');
         maxCharacterWidth = ($element.width() / $a.html().length) * 1.5;
         $h1.css({
-          fontSize: Math.min($element.height() / 4.0, maxCharacterWidth),
-          marginTop: $element.height() / 3.0
+          fontSize: Math.min($element.height() / 3.0, maxCharacterWidth),
+          marginTop: $element.height() / 4.0
         });
         return $p.css({
-          fontSize: parseInt($h1.css('fontSize')) / 4.0
+          fontSize: parseInt($h1.css('fontSize')) / 3.0
         });
       });
     };

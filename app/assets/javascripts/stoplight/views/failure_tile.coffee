@@ -8,13 +8,10 @@ class Views.FailureTile extends Backbone.View
     """
       <article class="project {{ last_build_status }} {{ current_status }}">
         <h1>
-          <a href="{{ build_url }}" target="_TOP">{{ name }}</a>
+          <a href="{{ build_url }}" target="_TOP">{{ name.substr(0, name.indexOf(':')) }}</a>
         </h1>
         <p class="status">
-          Build {{ last_build_id }} <strong>{{ last_build_status }}</strong>
-          <time class="build-time invisible" datetime="{{ last_build_time }}" title="{{ human_last_build_time }}">
-            {{ human_last_build_time }}
-          </time>
+          Previously <strong class="{{ last_build_status }}">{{ last_build_status }}</strong>
         </p>
       </article>
     """)

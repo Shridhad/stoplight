@@ -19,7 +19,7 @@
 
     FailureTile.prototype.className = 'wrapper';
 
-    FailureTile.prototype.template = _.template("<article class=\"project {{ last_build_status }} {{ current_status }}\">\n  <h1>\n    <a href=\"{{ build_url }}\" target=\"_TOP\">{{ name }}</a>\n  </h1>\n  <p class=\"status\">\n    Build {{ last_build_id }} <strong>{{ last_build_status }}</strong>\n    <time class=\"build-time invisible\" datetime=\"{{ last_build_time }}\" title=\"{{ human_last_build_time }}\">\n      {{ human_last_build_time }}\n    </time>\n  </p>\n</article>");
+    FailureTile.prototype.template = _.template("<article class=\"project {{ last_build_status }} {{ current_status }}\">\n  <h1>\n    <a href=\"{{ build_url }}\" target=\"_TOP\">{{ name.substr(0, name.indexOf(':')) }}</a>\n  </h1>\n  <p class=\"status\">\n    Previously <strong class=\"{{ last_build_status }}\">{{ last_build_status }}</strong>\n  </p>\n</article>");
 
     FailureTile.prototype.initialize = function(options) {
       this._width = options.width;

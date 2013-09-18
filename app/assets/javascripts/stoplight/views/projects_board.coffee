@@ -43,10 +43,10 @@ class Views.ProjectsBoard extends Backbone.View
       # 1.5 is an arbitrary value that only makes sense for this font
       maxCharacterWidth = ($element.width() / $a.html().length) * 1.5
       $h1.css
-        fontSize: Math.min($element.height() / 4.0, maxCharacterWidth)
-        marginTop: $element.height() / 3.0
+        fontSize: Math.min($element.height() / 3.0, maxCharacterWidth)
+        marginTop: $element.height() / 4.0
 
-      $p.css fontSize: parseInt($h1.css('fontSize')) / 4.0
+      $p.css fontSize: parseInt($h1.css('fontSize')) / 3.0
 
   _renderSuccess: ->
     view = new Views.SuccessTile()

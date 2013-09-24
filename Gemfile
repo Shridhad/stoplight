@@ -18,7 +18,6 @@ group :development do
   gem 'guard-rspec',              '~> 0.7.3'
   gem 'guard-spork',              '~> 0.8.0'
   gem 'shotgun',                  '~> 0.9'
-  gem 'therubyracer',             '~> 0.11.4'
 end
 
 group :test do

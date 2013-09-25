@@ -35,19 +35,23 @@ $spacing: 5px;
       left: $spacing;
 
       &.unknown {
-        @include project-box($dark-gray);
+        background-color: #444444;
+        //@include project-box($dark-gray);
       }
 
       &.success {
-        @include project-box($green);
+        background-color:  #7FBD39;
+        //@include project-box($green);
       }
 
       &.failed {
-        @include project-box($red);
+        background-color:  #B20000;
+        //@include project-box($red);
       }
 
       &.building {
-        @include project-box($yellow);
+        background-color: #00C2B6;
+        //@include project-box($yellow);
         animation: fade 0.5s alternate infinite ease-in-out;
         -webkit-animation: fade 0.5s alternate infinite ease-in-out;
         -moz-animation: fade 0.5s alternate infinite ease-in-out;

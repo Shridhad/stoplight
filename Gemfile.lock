@@ -53,8 +53,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.1.0)
-    ref (1.0.5)
+    rake (12.3.3)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -96,7 +95,7 @@ DEPENDENCIES
   puma (~> 2.1.0)
   rabl (~> 0.8.5)
   rack-test (~> 0.6.2)
-  rake (~> 10.1.0)
+  rake (~> 12.3.3)
   rspec (~> 2.13.0)
   shotgun (~> 0.9)
   sinatra (~> 1.4.3)

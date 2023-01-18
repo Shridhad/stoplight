@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'activesupport',      '~> 3.2.13'
+gem 'activesupport',      '~> 6.1.7'
 gem 'compass',            '~> 0.12.1'
 gem 'foreman',            '~> 0.63.0'
 gem 'httparty',           '~> 0.11.0'
